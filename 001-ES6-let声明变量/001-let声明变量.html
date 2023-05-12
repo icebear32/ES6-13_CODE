@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let 声明变量</title>
+</head>
+
+<body>
+    <ul>
+        <li>1111</li>
+        <li>2222</li>
+        <li>3333</li>
+    </ul>
+
+    <ol>
+        <li>4444</li>
+        <li>5555</li>
+        <li>6666</li>
+    </ol>
+    <script>
+        // 块级作用域
+        {
+            let i = 100; // 只存在块内
+        }
+
+        // // 即使在 if for 的块级也只存在于块内
+        if (true) {
+            let i = 100;
+        }
+        // console.log(i); // Uncaught ReferenceError: i is not defined
+        // 报错原因是 打印的是块级外部的 i，没有检测到 i 的存在
+
+        // var 定义的就不会报错
+        if (true) {
+            var i = 100;
+        }
+        console.log(i);
+
+        // 不管 for 循环内部，外部也可以打印 i
+        for (var i = 0; i < 5; i++) {
+        }
+        console.log(i); // 5
+        // 弊端：会影响后面的程序
+
+        for (let j = 0; j < 5; j++) {
+        }
+        // console.log(j); // Uncaught ReferenceError: j is not defined
+        // 每次 for 循环都是一次新的变量
+        // 循环内都会记住上一次的值，在上一次的值进行操作，直到完成循环
+        // 结束后就访问不到 j，不会向外部泄露
+
+        // 例：打印出点击 ul 下 的 li 的索引值
+        // var uli = document.querySelectorAll('ul li');
+        // for (var i = 0; i < uli.length; i++) {
+        //     uli[i].onclick = function () {
+        //         console.log(i);
+        //     }
+        // }
+        // 改进
+        var uli = document.querySelectorAll('ul li');
+        for (var i = 0; i < uli.length; i++) {
+            uli[i].index = i; // 将 i 赋值给每个 li 的索引值
+            uli[i].onclick = function () {
+                // console.log(i);
+                console.log(this.index); // 直接打印相关的 li 索引值
+            }
+        }
+
+        // let 
+        var oli = document.querySelectorAll('ol li');
+        for (let i = 0; i < oli.length; i++) {
+            console.log(i);
+            // i 在循环中没有被释放，依赖于 for 循环
+        }
+    </script>
+</body>
+
+</html>

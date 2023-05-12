@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>const 问题</title>
+</head>
+
+<body>
+    <script>
+        // 是不是所有 const 修饰的变量都不能被修改？
+        const myobj = {
+            name: 'ich',
+            age: 100
+        }
+
+        // myobj = 'fff'; // 不允许
+
+        myobj.name = "du";
+        console.log(myobj);
+        // 对象里的属性可以被修改，myobj 是一个地址
+
+        // 怎么样才可以使得对象里面的属性不被修改？
+        // 用 fresze 冻住对象里面的每一个属性
+        const youobj = Object.freeze({
+            name: 'du',
+            age: 100
+        })
+        youobj.name = "ich";
+        console.log(youobj.name); // du 对象里的属性值没有被修改到
+    </script>
+</body>
+
+</html>

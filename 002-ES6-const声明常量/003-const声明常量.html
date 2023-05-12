@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>const 声明常量</title>
+</head>
+
+<body>
+    <script>
+        // 常量
+        const myname = 'ich';
+        // myname = 'du';
+        // 不允许被修改
+        // 报错：Uncaught TypeError: Assignment to constant variable
+
+        // 必须初始化
+        // const youname;
+        // youname = du;
+        // 报错：'const' declarations must be initialized
+
+        // 不能重复定义
+        // const mname = 'ich';
+        // const mname = 'du';
+        // 报错:Uncaught SyntaxError: Identifier 'mname' has already been declared
+
+        // 块级作用域
+        {
+            const myage = 100;
+        }
+        // console.log(myage);
+        // 报错:Uncaught ReferenceError: myage is not defined
+
+        // 没有变量提升
+        // const youname = 'du';
+        // function test() {
+        //     console.log(youname);
+        //     const youname = 'panda';
+        // }
+        // test();
+        // 报错原因没有变量提升，进入函数内部打印遇到暂存性死去
+        // 报错：Uncaught ReferenceError: Cannot access 'youname' before initialization
+
+        // 不与顶层对象挂钩
+        const myage = 100;
+        console.log(window.myage); // undefined
+    </script>
+</body>
+
+</html>

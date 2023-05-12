@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let 声明变量</title>
+</head>
+
+<body>
+    <script>
+        // 不允许重复声明
+        var a = 1;
+        var a = 10; // 重复声明
+        console.log(a); // 10
+
+        // let b = 10;
+        // let b = 20;
+        // 提示错误：Cannot redeclare block-scoped variable 'b'.
+
+        // var c = 10;
+        // let c = 20;
+        // 报错
+        // Uncaught SyntaxError: Identifier 'c' has already been declared
+
+        // 没有变量提升
+        console.log(myname); // 先显示 undefined
+        var myname = 'ich'; // 变量提升，可以调用再定义，不报错
+
+        // console.log(youname);
+        // let youname = 'du';
+        // 报错：Uncaught ReferenceError: Cannot access 'youname' before initialization
+
+        // 暂存性死区
+        // let mname = "ich";
+        // function test() {
+        //     // 暂存性死区
+        //     // 因为 console.log 下面的 mname 不会变量提升，
+        //     // console.log 没有找到 变量 mname
+        //     // 一般情况下，没有找到就会向外部查找相应变量
+        //     // 但是但进入到函数内部时，检测到有 mname，但是没有进行到下一步定义它
+        //     // 所以无法使用 使用 函数内部的 mname，就会导致矛盾，出现报错
+        //     console.log(mname);
+        //     let mname = 'du';
+        // }
+        // test()
+        // 报错：Uncaught ReferenceError: Cannot access 'mname' before initialization
+
+        // 不与顶层对象挂钩
+        var youage = 100;
+        console.log(window.youage); // 100 与顶层对象挂钩
+
+        let myage = 100;
+        console.log(window.myage); // undefined 不与顶层对象挂钩
+    </script>
+</body>
+
+</html>
