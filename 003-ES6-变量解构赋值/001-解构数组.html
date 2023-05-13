@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量解构赋值</title>
+</head>
+
+<body>
+    <script>
+        // 数组解构赋值
+        let arr = [1, 2, 3];
+        let [a, b, c] = arr; // 解构赋值，a 赋值 1，b 赋值 2，c 赋值 3
+
+        // 两数交换
+        let x = 1;
+        let y = 2;
+        [y, x] = [x, y]
+        console.log('x = ' + x, 'y = ' + y); // x = 2 y = 1
+
+        // 单拿最后一个值
+        let arr1 = [1, 2, 3];
+        let [, , e] = arr1;
+        console.log(e); // 3
+
+        // 单拿二维数组中的数组的第一个值
+        let arr2 = [1, [2, 3, 4], 5, 6];
+        let [a1, b1, c1] = arr2;
+        console.log(b1); // [2,3,4]
+        // 改进
+        let [a2, [b2], c2] = arr2;
+        console.log(b2); // 2
+        // 若要拿 4
+        let [a3, [, , b3], c3] = arr2;
+        console.log(b3); // 4
+
+        // 设置默认值
+        let [l] = [];
+        console.log(l); // undefined，因为没有赋值，所以是 undefined
+        // 不想 undefined，可以加一个默认值
+        let [z = 1] = [];
+        console.log(z); // 1，获得默认值
+        let [q = 1] = [100]
+        console.log(q); // 100，默认值被替代
+    </script>
+</body>
+
+</html>

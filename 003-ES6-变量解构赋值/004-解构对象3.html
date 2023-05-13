@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量解构赋值</title>
+</head>
+
+<body>
+    <script>
+        // 使用函数来处理对象
+        function getData() {
+            let res = {
+                code: 200,
+                data: {
+                    list: ['111', '222', '333']
+                }
+            }
+
+            test(res);
+            test1(res);
+            test2(res);
+            test3(res);
+        }
+
+        function test(res) {
+            console.log(res); // {code: 200, data: {…}}
+        }
+
+        // 打印对象内容
+        getData();
+
+        // 在函数传参部分进行解构
+        function test1({ code, data }) {
+            console.log(code, data); // 200 {list: Array(3)}
+        }
+
+        function test2({ code, data: { list } }) {
+            console.log(code, list); // 200 (3) ['111', '222', '333']
+        }
+
+        function test3({ code, data: { list: [x, y, z] } }) {
+            console.log(code, x, y, z); // 200 '111' '222' '333'
+        } 
+    </script>
+</body>
+
+</html>

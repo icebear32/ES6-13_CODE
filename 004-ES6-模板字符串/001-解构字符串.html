@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构字符串</title>
+</head>
+
+<body>
+    <script>
+        // 解构字符串
+        let str = "string";
+        let [a, b, c] = str;
+        console.log(a, b, c); // s t r
+
+        // 获取字符串长度
+        let { length } = str;
+        console.log(length); // 6
+
+        // 重名问题
+        let { length: len } = str;
+        console.log(len); // 6
+    </script>
+</body>
+
+</html>

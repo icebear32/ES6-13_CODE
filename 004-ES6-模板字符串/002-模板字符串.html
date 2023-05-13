@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板字符串</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul></ul>
+    <ol></ol>
+    <script>
+        // 插入 <li><b>ich</b></li> 的html标签代码
+        let name = 'ich';
+        let uli = "<li>\
+            <b>" + name + "</b>\
+            </li>"
+        // 使用了字符串拼接，还有换行的符号
+        // 写法麻烦
+        let oli = `<li>
+            <b>${name}</b>
+            </li>`
+        // 支持换行，${} 中可以插入变量
+
+        console.log(oli);
+
+        let arr = ['ich', 'du', 'ice', 'panda'];
+        let newlist = arr.map(function (item) {
+            return `<li>
+            <b>${item}</b>
+            </li>`
+        })
+        console.log(newlist);
+
+        let ul = document.querySelector("ul");
+        ul.innerHTML = newlist;
+        // 因为有逗号分隔了
+        let ol = document.querySelector("ol");
+        ol.innerHTML = newlist.join(""); // 以空字符串分隔
+
+        // 实现添加 class ，并改变第一个 li 的 css 样式
+        let newlist1 = arr.map(function (item, index) {
+            return `<li class="${index === 0 ? 'active' : ''}">
+            <b>${item}</b>
+            </li>`
+        })
+        console.log(newlist1);
+        ol.innerHTML = newlist1.join("");
+    </script>
+</body>
+
+</html>

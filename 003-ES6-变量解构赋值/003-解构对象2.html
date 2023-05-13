@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量解构赋值</title>
+</head>
+
+<body>
+    <script>
+        // 访问对象的 属性 list 的内容
+        let code = 'AAA';
+        let res = {
+            code: 200,
+            data: {
+                list: ['111', '222', '333']
+            }
+        }
+        // 获取 data
+        let { data, code: co } = res;
+        console.log(data, co); // 111 200
+
+        // 获取 list 
+        let { data: { list } } = res;
+        console.log(list);
+
+        // 获取 list 的内容
+        let { data: { list: [x, y, z] } } = res;
+        console.log(x, y, z);
+    </script>
+</body>
+
+</html>
