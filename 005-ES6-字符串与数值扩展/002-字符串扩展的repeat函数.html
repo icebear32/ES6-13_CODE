@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串扩展的repeat函数</title>
+</head>
+<body>
+    <script>
+        let myname = "ichdu";
+
+        console.log(myname.repeat(2)); // ichduichdu
+        console.log(myname.repeat(2.8)); // ichduichdu，重复两次，把 0.8 切掉
+        console.log(myname.repeat("aaa")); // 检测不出多少次，打印为空
+        console.log(myname.repeat("4")); // 将字符串 “4” 转为数值 4 ，重复打印 4 次
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串扩展的includes函数</title>
+</head>
+
+<body>
+    <script>
+        let myname = "ichdu";
+
+        // includes 判断字符串中是否存在指定字符
+        console.log(myname.includes("i")); // true
+        console.log(myname.includes("d")); // true
+        console.log(myname.includes("ich")); // true
+        console.log(myname.includes("iu")); // false
+
+        // startsWith 判断字符串是否开头字符串
+        console.log(myname.startsWith('i')); // true
+        console.log(myname.startsWith('ich')); // true
+
+        // endsWith 判断字符串是否结尾字符串
+        console.log(myname.endsWith('u')); // true
+        console.log(myname.endsWith('du')); // true
+
+        // 加入第二个位置参数
+        // includes
+        console.log(myname.includes("i")); // true
+        // 以字符串索引值为 1 开始判断
+        console.log(myname.includes("i", 1)); // false
+
+        // startsWith
+        console.log(myname.startsWith('i')); // true
+        // 以字符串索引值为 1 开始判断
+        console.log(myname.startsWith('i', 1)); // false
+
+        // endsWith
+        console.log(myname.endsWith('u')); // true
+        // 以字符串倒数第三个开始判断
+        console.log(myname.endsWith('u',3)); // false
+        console.log(myname.endsWith('h',3)); // true
+    </script>
+</body>
+
+</html>
