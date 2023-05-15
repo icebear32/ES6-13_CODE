@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>isFinite 与 isNaN方法</title>
+</head>
+
+<body>
+    <script>
+        // Number.isFinite Number.isNaN
+        // isNaN() —— 检测一个值是否为NaN，隐式转为数字型，是NaN返回true，不是返回false
+
+        // window 自带的isNaN 方法，传统的全局方法isNaN()
+        let num1 = isNaN(100);
+        let num2 = isNaN(NaN);
+        let num3 = isNaN("ich");
+        let num4 = isNaN("100");
+
+        console.log(num1); // false
+        console.log(num2); // true
+        // 尝试转换成数值，不成功，返回true
+        console.log(num3); // true
+        console.log(num4); // false
+
+        // 新特性的全局方法 isNaN()
+        let num5 = Number.isNaN(100);
+        let num6 = Number.isNaN(NaN);
+        let num7 = Number.isNaN("ich");
+        let num8 = Number.isNaN("100");
+
+        console.log(num5); // false
+
+        // Number.isNaN()只有对于NaN才返回true，非NaN一律返回false
+        console.log(num6); // true
+        console.log(num7); // false
+
+        console.log(num8); // false
+    </script>
+</body>
+
+</html>

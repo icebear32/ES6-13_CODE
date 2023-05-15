@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>isFinite 与 isNaN方法</title>
+</head>
+
+<body>
+    <script>
+        // Number.isFinite Number.isNaN
+
+        // window 自带的 isFinite 方法，传统的全局方法isFinite()
+        let num1 = isFinite(100);
+        let num2 = isFinite(100 / 0);
+        let num3 = isFinite(Infinity);
+        let num4 = isFinite("100"); 
+
+        console.log(num1); // true
+        console.log(num2); // false
+        console.log(num3); // false
+
+        // 因为会先尝试转换成数值，再进行判断，所以为 true
+        console.log(num4); // true
+
+        // 新特性的全局方法isFinite()
+        let num5 = Number.isFinite(100);
+        let num6 = Number.isFinite(100 / 0);
+        let num7 = Number.isFinite(Infinity);
+        let num8 = Number.isFinite("100");
+
+        console.log(num5); // true
+        console.log(num6); // false
+        console.log(num7); // false
+
+        // Number.isFinite()对于非数值一律返回false
+        console.log(num8); // false
+    </script>
+</body>
+
+</html>

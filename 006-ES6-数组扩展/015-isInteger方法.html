@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>isInteger 方法</title>
+</head>
+
+<body>
+    <script>
+        let num1 = Number.isInteger(100);
+        // 100.0 也算整数
+        let num2 = Number.isInteger(100.0);
+        // 100.1 就不是整数了
+        let num3 = Number.isInteger(100.1);
+        let num4 = Number.isInteger("ich");
+        let num5 = Number.isInteger("100");
+
+        console.log(num1); // true
+        console.log(num2); // true
+        console.log(num3); // false
+        console.log(num4); // false
+        console.log(num5); // false
+    </script>
+</body>
+
+</html>
