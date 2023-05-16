@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fill 方法</title>
+</head>
+
+<body>
+    <script>
+        // fill 快速填充
+        // array.fill( value , start , end )
+        // value 用来填充数组元素的值，必填
+        // start 可选 起始索引，默认值为 0
+        // end 可选 终止索引，默认值为 this.length
+        let arr = new Array(3).fill('ichdu');
+        console.log(arr);
+
+        let arr1 = [11, 22, 33];
+        console.log(arr1.fill("ich", 1, 2));
+    </script>
+</body>
+
+</html>

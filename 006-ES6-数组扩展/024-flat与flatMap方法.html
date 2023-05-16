@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flat 与 flatMap 方法</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 2, 3, [4, 5, 6]];
+        let arr1 = arr.flat();
+        console.log(arr, arr1);
+        // arr :1, 2, 3, [4, 5, 6] arr1 : 1, 2, 3, 4, 5, 6
+
+        var arr2 = [
+            ["鞍山", "安庆", "安阳"],
+            ["北京", "保定", "包头"]
+        ]
+        console.log(arr2.flat());
+
+        var obj = [
+            {
+                name: "A",
+                list: ["鞍山", "安庆", "安阳"]
+            },
+            {
+                name: "B",
+                list: ["北京", "保定", "包头"]
+            }
+        ]
+        console.log(obj.flat());
+        // 设置回调函数,返回的是传入的参数的 list 属性
+        console.log(obj.flatMap(item => item.list)) 
+    </script>
+</body>
+
+</html>

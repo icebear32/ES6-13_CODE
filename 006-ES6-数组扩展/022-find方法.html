@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>find 方法</title>
+</head>
+
+<body>
+    <script>
+        let arr = [11, 12, 13, 14, 15, 16];
+
+        // 找到比 13 大的数
+        let res = arr.find(function (item) {
+            return item > 13;
+        })
+        console.log(res); // 14
+
+        // 查找比 13 大的数,返回该索引
+        let res1 = arr.findIndex(function (item) {
+            return item > 13;   
+        })
+        console.log(res1); // 3
+
+        // ES2022 ES13 的 findLast findLastIndex
+        // findLast 从最后一个查找比 13 大的数
+        let res2 = arr.findLast(function (item) {
+            return item > 13;
+        })
+        console.log(res2); // 16
+
+        // 从最后一个查找比 13 大的数,返回该索引
+        let res3 = arr.findLastIndex(function (item) {
+            return item > 13;
+        })
+        console.log(res3); // 5
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展运算符</title>
+</head>
+
+<body>
+    <script>
+        // ... 展开
+        let arr = [1, 2, 3];
+
+        // 传统复制数组
+        let arr2 = arr.concat();
+        console.log(arr, arr2); // [1, 2, 3] [1, 2, 3]
+        arr2.pop();
+        console.log(arr, arr2); // [1, 2, 3] [1, 2]
+
+        // 扩展运算符 复制数组
+        let arr3 = [...arr];
+        console.log(arr, arr3); // [1, 2, 3] [1, 2, 3]
+
+        // 扩展运算符 合并数组
+        let arr4 = [4, 5, 6]
+        console.log([...arr, ...arr4]); // [1, 2, 3, 4, 5, 6]
+
+        // 扩展运算符与解构赋值的使用
+        let myarr = [1, 2, 3, 4, 5, 6, 7, 8];
+        let [a, b, c] = myarr;
+        console.log(a, b, c); // 1,2,3
+        // 只拿到单个值,可以前面 a,b 各取一个数值,剩下的全赋值给 c
+        let [a1, b1, ...c1] = myarr;
+        console.log(a1, b1, c1);
+    </script>
+</body>
+
+</html>
