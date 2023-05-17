@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.assign</title>
+</head>
+
+<body>
+    <script>
+        // ES6 快速合并对象
+        let obj1 = {
+            name: "ich"
+        }
+        let obj2 = {
+            age: 100
+        }
+        let obj3 = {
+            name: "ichdu"
+        }
+        console.log(Object.assign(obj1, obj2, obj3)); // {name: 'ichdu', age: 100}
+        // 缺点是会改变 obj1 对象
+        // 其实是将 obj2、obj3 合并到 obj1，obj2、obj3不会受到变化
+
+        // 不想改变obj1的解决方法：创建一个空的对象
+        let obj = {}
+        console.log(Object.assign(obj, obj1, obj2, obj3)); // {name: 'ichdu', age: 100}
+
+        // 扩展运算符...对对象的操作 快速复制对象、合并对象 ES2018
+        // 快速复制对象
+        let obj4 = {
+            name: "ich"
+        }
+        // 复制 obj4 给 obj5
+        let obj5 = {
+            ...obj4
+        }
+        console.log(obj5); // {name: 'ich'}
+        obj5.name = "du";
+        console.log(obj4); // {name: 'ich'} - 没有被更改到 name
+        console.log(obj5); // {name: 'du'} - 被更改 name
+
+        // 合并对象
+        let obj6 = {
+            name: "ich"
+        }
+        let obj7 = {
+            age: 100
+        }
+        let obj8 = {
+            name: "ichdu"
+        }
+        console.log({ ...obj6, ...obj7 }); // {name: 'ich', age: 100}
+        // 合并的对象有重名属性，后合并的对象属性会覆盖前对象属性
+        console.log({ ...obj6, ...obj7, ...obj8 }); // {name: 'ichdu', age: 100}
+    </script>
+</body>
+
+</html>

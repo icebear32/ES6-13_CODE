@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.is</title>
+</head>
+
+<body>
+    <script>
+        // Object.is 方法判断两个值是否是相同的值
+
+        //  == 和 === 都可以判断两个值是否是相同的值，
+        // 但有个弊端就是无法判断两个 NaN 为 true
+        console.log(NaN == NaN); // false
+        console.log(NaN === NaN); // false
+
+        console.log(Object.is(5, 5)); // true
+        console.log(Object.is(5, "5")); // false
+        console.log(Object.is({}, {})); // false
+        console.log(Object.is(NaN, NaN)); // true
+
+        // 用处，转换值错误时可以判断NaN
+        console.log(Object.is(parseInt("ich"), NaN)); // true
+
+        // 还可以判断 +0 -0 相不相等
+        console.log(Object.is(+0, -0)); // false
+        console.log(+0 === -0); // true
+    </script>
+</body>
+
+</html>

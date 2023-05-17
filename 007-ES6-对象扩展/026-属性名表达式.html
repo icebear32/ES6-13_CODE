@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性名表达式</title>
+</head>
+
+<body>
+    <script>
+        // 属性名表达式
+        // 给属性名起名
+        let name1 = "a";
+        let obj1 = {
+            [name1]: "ich", // 相当于 name: name,
+            test() { },
+            test2() { }
+        }
+        console.log(obj1); // {a: 'ich', test: ƒ, test2: ƒ}
+
+        let name2 = "a";
+        let obj2 = {
+            [name2 + "bc"]: "ich", // 相当于 name: name,
+            test() { },
+            test2() { }
+        }
+        console.log(obj2); // {abc: 'ich', test: ƒ, test2: ƒ}
+
+
+        let name3 = "a";
+        let name4 = "xxx";
+        let obj3 = {
+            [name2 + "bc"]: "ich", // 相当于 name: name,
+            [name4 + "test"]() { },
+            [name4 + "test2"]() { }
+        }
+        console.log(obj3); // {abc: 'ich', xxxtest: ƒ, xxxtest2: ƒ}
+    </script>
+</body>
+
+</html>
