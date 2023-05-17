@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rest 参数</title>
+</head>
+
+<body>
+    <script>
+        // rest 参数 剩余参数
+        function test(data) {
+            console.log(data);
+        }
+        test(1, 2, 3, 4, 5, 6); // 1
+        // 获得的是一个参数,因为形参只有一个
+
+        // 如何接收全部的参数
+        function test1(...data) {
+            console.log(data);
+        }
+        test1(1, 2, 3, 4, 5, 6); // 打印一个数组 [1, 2, 3, 4, 5, 6]
+
+        // a,b传入相应参数,剩余参数传给 data
+        function test2(a, b, ...data) {
+            console.log(data);
+        }
+        test2(1, 2, 3, 4, 5, 6); // [3, 4, 5, 6]
+
+        // name 属性,获得函数名字属性
+        console.log(test.name);
+    </script>
+</body>
+
+</html>
