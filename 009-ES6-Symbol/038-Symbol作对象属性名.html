@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用Symbol作为对象属性名</title>
+</head>
+
+<body>
+    <script>
+        let obj = {
+            name: "ich",
+            getName() {
+                console.log(this.name);
+            }
+        }
+
+        let name = Symbol();
+        obj[name] = "du";
+        console.log(obj[name]); // du
+        // 定义 symbol 变量，添加到 对象 作为对象的属性
+        // 作为新的属性，不会覆盖重名的普通属性
+        console.log(obj.name); // ich
+
+        // 不想对象属性被随意更改，使用symbol
+        let name1 = Symbol();
+        let age1 = Symbol();
+        let obj1 = {
+            [name1]: "ich",
+            [age1]: 100
+        }
+        console.log(obj1[name1]);
+        console.log(obj1[age1]);
+
+        // 不可以直接在里面这样定义，外面访问不到
+        let obj2 = {
+            [Symbol()]: "no",
+        }
+        console.log(obj2[Symbol()]); // 找的是另一个新创建的 Symbol 变量，所以是 undefined
+
+        // 使用Symbol作为对象属性名
+        let keys = {
+            name: Symbol(),
+            age: Symbol(),
+            location: Symbol(),
+            test: Symbol()
+        }
+        let obj3 = {
+            [keys.name]: "ich",
+            [keys.age]: 100,
+            [keys.location]: "cn",
+            [keys.test]() {
+                console.log("test");
+            }
+        }
+
+        console.log(obj3);
+    </script>
+</body>
+
+</html>
