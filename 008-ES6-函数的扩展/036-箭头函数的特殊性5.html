@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数的特殊性</title>
+</head>
+
+<body>
+    模糊搜索
+    <input type="text" id="mysearch"><br>
+    模糊搜索改进
+    <input type="text" id="mysearch1"><br>
+    模糊搜索箭头函数
+    <input type="text" id="mysearch2"><br>
+    模糊搜索箭头函数缺点
+    <input type="text" id="mysearch3">
+    <script>
+        let osearch = document.querySelector("#mysearch");
+        
+        // 传统函数的事件
+        // osearch.oninput = function () {
+        //     setTimeout(function () {
+        //         console.log(this); // Window,指向的事window
+        //         console.log(`发送${this.value}到后端,获取列表数据`);
+        //     }, 1000);
+        // }
+        // 发现发送的都是 undefined 的数据,而不是输入的正常值
+        // 因为 this 指向问题,谁调用,this 就指向谁
+        // 定时器是内置函数，window调用的，指向的是window下的this，
+        // 但是window没有this.value,所以出现 undefined
+        // 
+        // 改进
+        // 将 osearch1.oninput 的 this 赋值给 自定义一个变量
+        // 用来存储 osearch1.oninput 的 this
+        // 再给定时器调用就可以了
+        // let osearch1 = document.querySelector("#mysearch1");
+        // osearch1.oninput = function () {
+        //     let _this = this;
+        //     setTimeout(function () {
+        //         console.log(`发送${_this.value}到后端,获取列表数据`);
+        //     }, 1000);
+        // }
+
+        // 箭头函数
+        // let osearch2 = document.querySelector("#mysearch2");
+        // osearch2.oninput = () => {
+        //     setTimeout(function () {
+        //         // 箭头函数内部没有 this，箭头函数的 this 是上下文的 this
+        //         console.log(`发送${this.value}到后端,获取列表数据`);
+        //     }, 1000);
+        // }
+
+        // 箭头函数没有this的缺点
+        let osearch3 = document.querySelector("#mysearch3");
+        osearch3.oninput = () => {
+            console.log(this); // this 指向 Window 
+            console.log(this.value); // this的value值变成了 undefined
+            setTimeout(function () {
+                // 因为定时器的 this 指向 父级的，
+                // 父级的 this 是 undefined
+                // 所以定时器的this的value值也变成undefined
+                // 所以使用箭头函数没有this的特性要谨慎
+                console.log(`发送${this.value}到后端,获取列表数据`);
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

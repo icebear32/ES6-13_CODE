@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数的特殊性</title>
+</head>
+
+<body>
+    <script>
+        // 5.无法 new 实例化
+        let test7 = () => {
+            console.log("111");
+        };
+        new test7();
+        // 报错:Uncaught TypeError: test7 is not a constructor
+    </script>
+</body>
+
+</html>

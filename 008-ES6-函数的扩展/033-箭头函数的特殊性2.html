@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数的特殊性</title>
+</head>
+
+<body>
+    <script>
+        // 函数的行参只有一个的时候可以不写 `()` 其余情况必须写
+        // 3. 如果只有一个参数,可以省略包裹参数的()
+        let arr1 = ["aaa", "bbb", "ccc"];
+        let newarr2 = arr1.map(item => `<li>${item}</li>`);
+        console.log(newarr2); //  ['<li>aaa</li>', '<li>bbb</li>', '<li>ccc</li>']
+
+        let arr2 = ["aaa", "bbb", "ccc"];
+        let newarr3 = arr2.map((item, index) => `<li>${item}</li>`);
+        console.log(newarr3); //  ['<li>aaa</li>', '<li>bbb</li>', '<li>ccc</li>']
+    </script>
+</body>
+
+</html>
