@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象遍历</title>
+</head>
+
+<body>
+    <script>
+        // 对象 非线性
+        // let obj = {
+        //     0: "ich",
+        //     1: "du",
+        //     2: "ichdu"
+        // }
+
+        // for (let i of obj) {
+        //     console.log(i);
+        //     // Uncaught TypeError: obj is not iterable
+        //     // 报错,不是一个可以遍历的结构
+        // }
+
+        let obj = {
+            0: "ich",
+            1: "du",
+            2: "ichdu",
+            // 数组是有长度的,不然不知道结束
+            length: 3,
+            // 将数组的原型赋值给 对象的 [Symbol.iterator]
+            [Symbol.iterator]: Array.prototype[Symbol.iterator]
+        }
+
+        // 因为加了迭代器,对象可遍历
+        for (let i of obj) {
+            console.log(i);
+        }
+
+        // 应用:在对象中获取遍历 list 属性
+        let obj2 = {
+            code: 200,
+            name: "obj2",
+            list: ["ich", "du", "ichdu"],
+
+            // 迭代器
+            [Symbol.iterator]() {
+                // 设置一个获得 list 索引的参数
+                let index = 0;
+                // 返回
+                return {
+                    // 设置箭头函数是为了 this 指向 obj2
+                    next: () => {
+                        return {
+                            // 获得对象属性 list 的值 
+                            value: this.list[index++],
+                            // 判断是否超过 list 长度,超过返回 true,否则返回 false 可以继续执行遍历
+                            // 因为 index 在上面做了加加自增操作,所以
+                            done: index === (this.list.length + 1) ? true : false
+                        }
+                    }
+                }
+            }
+        }
+
+        let iter = obj2[Symbol.iterator]();
+        console.log(iter);
+        console.log(iter.next());
+        console.log(iter.next());
+        console.log(iter.next());
+
+        // 给对象加了迭代器,obj2 对象可遍历
+        for (let i of obj2) {
+            console.log(i);
+        }
+    </script>
+</body>
+
+</html>

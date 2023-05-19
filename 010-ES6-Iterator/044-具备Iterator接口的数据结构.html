@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>具备 Iterator 接口的数据结构</title>
+</head>
+
+<body>
+    <script>
+        // 字符串数组
+        let str = "ichdu";
+        let iter1 = str[Symbol.iterator]();
+
+        console.log(iter1.next());
+        console.log(iter1.next());
+        console.log(iter1.next());
+
+        // arguments 对象
+        function test() {
+            for (let i of arguments) {
+                console.log(i);
+            }
+        }
+        test(1, 2, 3, 4);
+    </script>
+</body>
+
+</html>
