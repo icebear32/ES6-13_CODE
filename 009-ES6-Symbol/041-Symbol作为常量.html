@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol作为常量</title>
+</head>
+
+<body>
+    <script>
+        // Symbol 作为常量
+        // const VIDEO = 1;
+        // const AUDIO = 1;
+        // const IMAGE = 1;
+
+        // 不用赋值，固定用变量名来判断
+        const VIDEO = Symbol();
+        const AUDIO = Symbol();
+        const IMAGE = Symbol();
+
+        function play(type) {
+            switch (type) {
+                case VIDEO:
+                    console.log("视频播放");
+                    break;
+                case AUDIO:
+                    console.log("音频播放");
+                    break;
+                case IMAGE:
+                    console.log("图片播放");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // 参数不一样也可以执行
+        play(VIDEO);
+        // play(1); // 没执行
+    </script>
+</body>
+
+</html>

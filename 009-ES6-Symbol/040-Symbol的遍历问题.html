@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol 的遍历问题</title>
+</head>
+
+<body>
+    <script>
+        let keys = {
+            name: Symbol("name"),
+            age: Symbol("age"),
+            location: Symbol("location"),
+            test: Symbol("test")
+        }
+        let obj = {
+            [keys.name]: "ich",
+            [keys.age]: 100,
+            [keys.location]: "cn",
+            [keys.test]() {
+                console.log("test");
+            }
+        }
+
+        // 设置对象普通属性
+        obj.name = "du";
+        obj.age = 20;
+
+        // for in 遍历打印出来的都是普通属性，并没有打印symbol属性
+        for (let i in obj) {
+            console.log(i);
+        }
+        // 遍历 symbol 要使用 Object.getOwnPropertySymbols() 方法
+        console.log(Object.getOwnPropertySymbols(obj));
+
+        // 普通属性和symbol属性全部遍历
+        console.log(Reflect.ownKeys(obj));
+
+        // 每个遍历对象属性和属性对应的值
+        Reflect.ownKeys(obj).forEach(item => {
+            console.log(item, obj[item]);
+        })
+    </script>
+</body>
+
+</html>
