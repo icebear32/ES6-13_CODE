@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set 结构</title>
+</head>
+
+<body>
+    <script>
+        let s1 = new Set([1, 2, 3, 4, 2, 2, 3, 3, 3, 3, 3]);
+
+        console.log(s1);
+
+        // 满足 iterator 
+        // 可以使用 ... 转换成数组
+        console.log([...s1]);
+
+        // Array.from 也可以转换数组
+        console.log(Array.from(s1));
+
+        // 初始化 set 结构的空数组，然后使用 add 函数添加元素
+        let s2 = new Set();
+        s2.add(1);
+        s2.add(2);
+        s2.add(2);
+        s2.add(3);
+        console.log(s2);
+
+        // 遍历 set 结构数组
+        for (let i of s1) {
+            console.log(i);
+        }
+    </script>
+</body>
+
+</html>

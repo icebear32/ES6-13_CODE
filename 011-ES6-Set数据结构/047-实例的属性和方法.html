@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实例的属性和方法</title>
+</head>
+
+<body>
+    <script>
+        let s1 = new Set([1, 2, 3, 4]);
+        // 实例的属性和方法
+        // size：返回Set实例的成员总数
+        console.log(s1.size);
+
+        // add
+        // Set.prototype.add(value)：添加某个value
+        s1.add(5);
+        s1.add(6).add(7);
+        console.log(s1); // Set(7) [ 1, 2, 3, 4, 5, 6, 7 ]
+
+        // has
+        // Set.prototype.has(value)：返回一个布尔值，表示该值是否为`Set`的成员
+        console.log(s1.has(8)); // false
+        console.log(s1.has(5)); // true
+
+        // delete
+        // Set.prototype.delete(value)：删除某个value，返回一个布尔值，表示删除是否成功
+        s1.delete(5);
+        console.log(s1.has(5)); // false
+
+        // clear
+        // Set.prototype.clear()：清除所有成员，没有返回值
+        s1.clear();
+        console.log(s1); // Set []
+    </script>
+</body>
+
+</html>

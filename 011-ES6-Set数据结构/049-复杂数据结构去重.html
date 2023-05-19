@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复杂数据结构去重</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 2, 2, "ich", "ich", "du",
+            [1, 2], [3, 4], [1, 2],
+            { name: "ich" }, { age: 100 }, { name: "ich" }];
+
+        console.log(arr);
+
+        function uni(arr) {
+            let res = new Set();
+            return arr.filter((item) => {
+                // 判断是否有相同的内容 has true false
+                // 没有就 return true
+
+                // JSON.stringify()的作用是将 JavaScript 对象转换为 JSON 字符串
+                let id = JSON.stringify(item);
+
+                if (res.has(id)) {
+                    return false;
+                } else {
+                    res.add(id);
+                    return true;
+                }
+            })
+        }
+
+        console.log(uni(arr));
+    </script>
+</body>
+
+</html>

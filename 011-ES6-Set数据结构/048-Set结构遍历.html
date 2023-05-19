@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set结构遍历</title>
+</head>
+
+<body>
+    <script>
+        let s1 = new Set([1, 2, 3]);
+
+        // 遍历
+        console.log("for of 普通遍历");
+        for (let i of s1) {
+            console.log(i);
+        }
+
+        console.log("== Set.prototype.keys()：返回键名的遍历器 ==");
+        for (let i of s1.keys()) {
+            console.log(i);
+        }
+
+        console.log("== Set.prototype.values()：返回键值的遍历器 ==");
+        for (let i of s1.values()) {
+            console.log(i);
+        }
+
+        console.log("== Set.prototype.entries()：返回键值对的遍历器 ==");
+        for (let i of s1.entries()) {
+            console.log(i);
+        }
+
+        console.log("== entries 与数组结合 ==");
+        let arr = ["aaa", "bbb", "ccc"];
+        for (let i of arr.entries()) {
+            console.log(i);
+        }
+
+        console.log("== 打印 索引值 和 对应的内容 ==");
+        for (let [index, item] of arr.entries()) {
+            console.log(index, item);
+        }
+
+        console.log("== Set.prototype.forEach()：遍历每个成员 ==");
+        s1.forEach((item, index) => {
+            console.log(item, index);
+        })
+    </script>
+</body>
+
+</html>
