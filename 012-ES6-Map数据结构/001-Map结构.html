@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map 结构</title>
+</head>
+
+<body>
+    <script>
+        let m1 = new Map([
+            ["name", "ich"],
+            ["age", 100],
+            [{ a: 1 }, "广东"]
+        ])
+        console.log(m1);
+
+        // 定义空 Map
+        let m2 = new Map();
+        m2.set("name", "ich");
+        m2.set("age", 100);
+        m2.set({ a: 1 }, "广东");
+        console.log(m2);
+
+        // 遍历
+        for (let i of m2) {
+            console.log(i);
+        }
+
+        // 将 Map 结构转换成数组
+        console.log([...m2]);
+    </script>
+</body>
+
+</html>

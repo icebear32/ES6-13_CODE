@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map 遍历</title>
+</head>
+
+<body>
+    <script>
+        let m2 = new Map();
+        m2.set("name", "ich");
+        m2.set("age", 100);
+        let o = { a: 1 };
+        m2.set(o, "广东");
+
+        // keys()
+        console.log("== Map.prototype.keys()：返回键名的遍历器 ==");
+        for (let i of m2.keys()) {
+            console.log(i);
+        }
+
+        // values()
+        console.log("== Map.prototype.values()：返回键值的遍历器 ==");
+        for (let i of m2.values()) {
+            console.log(i);
+        }
+
+        // entries()
+        console.log("== Map.prototype.entries()：返回所有成员的遍历器 ==");
+        for (let [index, item] of m2.entries()) {
+            console.log(index, item);
+        }
+        // 和上一个一样的，因为迭代器都是相同的
+        for (let [index, item] of m2) {
+            console.log(index, item);
+        }
+
+        // forEach()
+        console.log("== Map.prototype.forEach()：遍历 Map 的所有成员 ==");
+        m2.forEach((item, index) => {
+            console.log(item, index);
+        })
+    </script>
+</body>
+
+</html>
