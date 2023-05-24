@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy的has方法</title>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        let box = document.querySelector(".box");
+
+        let target = {
+            _prop: "内部数据"
+        }
+        let proxy = new Proxy(target, {
+            get(target, prop) {
+                return target[prop]
+            },
+            set(target, prop, value) {
+                if (prop === "data") {
+                    box.innerHTML = value
+                }
+                target[prop] = value;
+            },
+
+            // 设置满足存在条件的属性名，
+            // 再进行判断,就判断是否有该属性
+            has(target, key) {
+                if (key[0] === '_') {
+                    return false;
+                }
+                return key in target;
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy拦截不同数据结构</title>
+</head>
+
+<body>
+    <script>
+        let s = new Set();
+
+        // let proxy = new Proxy(s, {
+        //     get() {
+        //         console.log("get");
+        //     },
+        //     set() {
+        //         console.log("set");
+        //     }
+        // })
+        // 使用 proxy.size 时可以打印 get，证明拦截成功
+        // 但是使用 proxy.add 放方法就报错
+        // 报错原因：get 方法没有做对方法的处理
+
+        // 解决 get 方法没有做对方法的处理
+        // let proxy = new Proxy(s, {
+        //     get(target, key) {
+        //         // console.log("get");
+        //         return target[key];
+        //     },
+        //     set() {
+        //         console.log("set");
+        //     }
+        // })
+        // 正常调用 size，add 都没问题，
+        // 但是在使用 add 方法时添加元素就报错
+        // 报错原因: this 绑定指向错误，this 时指向 Proxy 代理，
+        // 但是需要用 this 指向 set 结构的属性方法
+
+        // 解决 this 绑定指向错误
+        let proxy = new Proxy(s, {
+            get(target, key) {
+                // 判断如果是方法，就修改this指向
+                let value = target[key];
+                if (value instanceof Function) {
+                    // call apply bind
+                    // 遇到 Function 都手动绑定一下 this，
+                    // 使用 bind 绑定
+                    return value.bind(target);
+                    //不能 是 call apply
+                }
+                return value;
+            },
+            set() {
+                console.log("set");
+            }
+        })
+
+        let m = new Map();
+        let proxys = new Proxy(m, {
+            get(target, key) {
+                // 判断如果是方法，就修改this指向
+                let value = target[key];
+                if (value instanceof Function) {
+                    // call apply bind
+                    // 遇到 Function 都手动绑定一下 this，
+                    // 使用 bind 绑定
+                    return value.bind(target);
+                    //不能 是 call apply
+                }
+                return value;
+            },
+            set() {
+                console.log("Map");
+            }
+        })
+    </script>
+</body>
+
+</html>
