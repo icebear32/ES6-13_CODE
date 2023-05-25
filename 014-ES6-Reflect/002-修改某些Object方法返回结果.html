@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改某些Object方法返回结果</title>
+</head>
+
+<body>
+    <script>
+        // let obj = {};
+        // Object.defineProperty(obj, "name", {
+        //     value: "ich",
+        //     // writable: true,
+        //     // enumerable: true
+        //     writable: false,
+        //     enumerable: false
+        // })
+
+        // let res = Object.defineProperty(obj, "name", {
+        //     value: "du"
+        // })
+
+        // console.log(res);
+
+        // 改为 Reflect - 不会提示报错，只不过会返回 false 返回值，优点不会打断代码运行
+        let obj = {};
+        // Object.defineProperty(obj, "name", {
+        Reflect.defineProperty(obj, "name", {
+            value: "ich",
+            // writable: true,
+            // enumerable: true
+            writable: false,
+            enumerable: false
+        })
+
+        let res = Reflect.defineProperty(obj, "name", {
+            value: "du"
+        })
+
+        console.log(res);
+    </script>
+</body>
+
+</html>
