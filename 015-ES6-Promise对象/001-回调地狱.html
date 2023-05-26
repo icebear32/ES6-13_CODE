@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回调地狱</title>
+</head>
+
+<body>
+    <script>
+        function ajax(url, success, failcb) {
+            setTimeout(() => {
+                success("11111")
+            }, 1000)
+        }
+
+        ajax({
+            url: '我是第一个请求',
+            success(res) {
+                // 现在发送第二个请求
+                ajax({
+                    url: '我是第二个请求',
+                    data: { a: res.a, b: res.b },
+                    success(res2) {
+                        // 进行第三个请求
+                        ajax({
+                            url: '我是第三个请求',
+                            data: { a: res2.a, b: res2.b },
+                            success(res3) {
+                                console.log(res3)
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

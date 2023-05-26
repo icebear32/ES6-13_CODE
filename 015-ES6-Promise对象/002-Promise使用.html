@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise 使用</title>
+</head>
+
+<body>
+    <script>
+        // promise
+        // 假设异步处理
+        // 成功时执行的函数 resolve
+        // 失败时执行的函数 reject
+        let pro = new Promise(function (resolve, reject) {
+            // 执行器函数
+            setTimeout(() => {
+                // 假设成功
+                resolve()
+            }, 1000)
+        })
+        pro.then(() => {
+            console.log("奖金");
+        }, () => {
+            console.log("没有");
+        })
+
+
+        let pro1 = new Promise(function (resolve, reject) {
+            // 执行器函数
+            setTimeout(() => {
+                // 假设失败
+                reject()
+            }, 1000)
+        })
+        pro1.then(() => {
+            console.log("奖金");
+        }, () => {
+            console.log("没有");
+        })
+
+
+        let pro2 = new Promise(function (resolve, reject) {
+            // 执行器函数
+            setTimeout(() => {
+                // 假设成功，设置参数
+                // resolve(1000)
+                // 假设失败，设置参数
+                reject("1111")
+            }, 1000)
+        })
+        pro2.then((res) => {
+            console.log("奖金", res);
+        }).catch((err) => {
+            console.log("没有", err);
+        })
+    </script>
+</body>
+
+</html>
