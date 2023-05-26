@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise.all</title>
+</head>
+
+<body>
+    <script>
+        let pro = new Promise(function (resolve, reject) {
+            // 执行器函数
+            setTimeout(() => {
+                resolve(1000)
+            }, 1000)
+        })
+
+        let pro1 = new Promise(function (resolve, reject) {
+            // 执行器函数
+            setTimeout(() => {
+                resolve(2000)
+            }, 1000)
+        })
+
+        let pro2 = new Promise(function (resolve, reject) {
+            // 执行器函数
+            setTimeout(() => {
+                resolve(3000)
+            }, 1000)
+        })
+
+        // showloading 和 hideloading 的应用
+
+        // showloading
+        Promise.all([pro, pro1, pro2]).then(res => {
+            // hideloading
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        })
+    </script>
+</body>
+
+</html>

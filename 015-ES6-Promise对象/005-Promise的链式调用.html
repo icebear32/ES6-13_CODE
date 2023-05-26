@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise的链式调用</title>
+</head>
+
+<body>
+    <script>
+        let pro = new Promise(function (resolve, reject) {
+            // 执行器函数
+            setTimeout(() => {
+                // 假设成功
+                resolve(1000)
+                // reject("no 1111")
+            }, 1000)
+        })
+
+        pro.then((res) => {
+            console.log("奖金1", res);
+            // 如果 return 非 promise 类型，将是 pending 到 fulfilled 的状态
+            
+            //如果return promise类型，根据这个新的promise对象的结果，
+            // 决定 pending 到 fulfilled 的状态还是 pending 到 rejected 的状态
+        }).then((res) => {
+            console.log("奖金2", res);
+        }).catch((err) => {
+            console.log("没有", err);
+        })
+        // 打印出来的是 奖金1 1000 奖金2 undefined
+        // 为什么不是打印 奖金1 1000 就冻结了状态
+        // 因为 第一个执行完返回的时没具体写返回什么，所以是 undefined，
+        // 然后再次执行 then 和 catch语句
+
+
+        let pro1 = new Promise(function (resolve, reject) {
+            // 执行器函数
+            setTimeout(() => {
+                // 假设成功
+                resolve(1000)
+                // reject("no 1111")
+            }, 1000)
+        })
+        pro1.then((res) => {
+            console.log("奖金3", res);
+            return res
+            // 如果 return 非 promise 类型，将是 pending 到 fulfilled 的状态
+            
+            //如果return promise类型，根据这个新的promise对象的结果，
+            // 决定 pending 到 fulfilled 的状态还是 pending 到 rejected 的状态
+        }).then((res) => {
+            console.log("奖金4", res);
+        }).catch((err) => {
+            console.log("没有", err);
+        })
+    </script>
+</body>
+
+</html>
