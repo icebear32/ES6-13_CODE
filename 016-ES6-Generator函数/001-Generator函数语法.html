@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator 函数语法</title>
+</head>
+<body>
+    <script>
+        function *gen() {
+            console.log(11);
+            yield // 产出
+            console.log(22);
+            yield
+            console.log(33);
+        }
+
+        let g = gen()
+        // 运行后什么也没有打印
+
+        g.next()
+        g.next()
+        g.next()
+        // yield(产出)表达式是暂停执行的标记，而next方法可以恢复执行
+    </script>
+</body>
+</html>

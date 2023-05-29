@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>073-Generator函数 next参数</title>
+</head>
+
+<body>
+    <script>
+        function* gen() {
+            let res1 = yield "aaa" // 产出
+            console.log("gen 内部", res1);
+            let res2 = yield "bbb"
+            console.log("gen 内部", res2);
+        }
+
+        let g = gen()
+
+        let res1 = g.next("传入 - 1111")
+        console.log(res1)
+
+        let res2 = g.next("传入 - 2222")
+        console.log(res2)
+
+        let res3 = g.next("传入 - 3333")
+        console.log(res3)
+
+        // // 第一个传入的参数没有意义
+        // 因为到yield时yield是没有做赋值操作
+        // 而是停住了
+
+        // yield 执行流程
+        // 接着开始操作
+        // 第二个传入的参数赋值给了res1
+        // 所以最后的打印结果是先next获得yield返回值然后再打印gen内部传入 - 2222
+        // 之后的以此类推打印
+    </script>
+</body>
+
+</html>
