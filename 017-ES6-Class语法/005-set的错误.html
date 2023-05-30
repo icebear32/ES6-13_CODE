@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getter与setter</title>
+</head>
+
+<body>
+    <script>
+        // 将 get 的返回注释，在 set 增加 this.location = data，表示在初始化时对初始化的值进行赋值操作
+        class Person {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+
+            get location() {
+                console.log("get");
+            }
+
+            set location(data) {
+                console.log("set", data);
+                this.location = data
+            }
+        }
+
+        let obj = new Person()
+        
+        // 还是出现报错，因为在初始化时已经赋值了location
+        // 被set拦截后有进行新的赋值，又开始初始化赋值，
+        // 又被set拦截赋值，不断死循环报错
+
+    </script>
+</body>
+
+</html>

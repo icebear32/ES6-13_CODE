@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getter与setter</title>
+</head>
+
+<body>
+    <script>         
+        // 对 location 的初始化
+        // 改动：在 get 方法增加返回值，访问 location
+        class Person {
+            constructor(name, age,location) {
+                this.name = name
+                this.age = age
+                this.location = location
+            }
+
+            get location() {
+                console.log("get");
+                return this.location
+            }
+
+            set location(data) {
+                console.log("set", data);
+            }
+        }
+
+        let obj = new Person("ich",100,"guangdong")
+        // 出现错误：初始化后进行访问location，get拦截，返回值又是再次访问location，导致不断地get拦截访问，死循环
+    </script>
+</body>
+
+</html>

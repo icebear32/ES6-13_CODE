@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class symbol</title>
+</head>
+
+<body>
+    <script>
+        let s = Symbol('say')
+        class Person {
+            // constructor 构造器
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+
+            [s]() {
+                console.log(this.name, this.age);
+            }
+        }
+
+        let obj = new Person("ich", 100)
+        console.log(obj);
+        obj[s]()
+    </script>
+</body>
+
+</html>

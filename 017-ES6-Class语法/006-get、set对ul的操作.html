@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get、set对ul的操作</title>
+</head>
+
+<body>
+    <ul id="list"></ul>
+    <script>
+        class Person {
+            constructor(name, age, id) {
+                this.name = name
+                this.age = age
+                this.ele = document.querySelector(`#${id}`)
+            }
+
+            get html() {
+                return this.ele.innerHTML
+            }
+
+            set html(data) {
+                this.ele.innerHTML = data.map(item => `<li>${item}</li>`).join("")
+            }
+        }
+
+        let obj = new Person("ich",100,"list")
+
+        obj.html = ["111","222","333"]
+    </script>
+</body>
+
+</html>

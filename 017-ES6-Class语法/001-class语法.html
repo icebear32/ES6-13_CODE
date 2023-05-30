@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class语法</title>
+</head>
+
+<body>
+    <script>
+        // 传统构造函数
+        function Person(name, age) {
+            this.name = name
+            this.age = age
+        }
+
+        Person.prototype.say = function () {
+            console.log(this.name, this.age);
+        }
+
+        let obj = new Person("ich", 100)
+        console.log(obj);
+
+        // ES6 class 语法
+        class Persons {
+            // constructor 构造器
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+
+            say() {
+                console.log(this.name, this.age);
+            }
+        }
+
+        let obj1 = new Persons("ich", 100)
+        console.log(obj1);
+
+        // __proto__ 隐式的属性跟 对象.prototype 的一样
+        console.log(obj1.__proto__ === Persons.prototype); // true
+    </script>
+</body>
+
+</html>

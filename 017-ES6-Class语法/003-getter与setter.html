@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getter与setter</title>
+</head>
+
+<body>
+    <script>
+        // class Person {
+        //     constructor(name, age) {
+        //         this.name = name
+        //         this.age = age
+        //     }
+
+        //     get location() {
+        //         console.log("get");
+        //     }
+
+        //     set location(data) {
+        //         console.log("set", data);
+        //     }
+        // }
+
+        // let obj = new Person()
+
+        // 初始化
+        class Person {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+
+            get location() {
+                console.log("get");
+            }
+
+            set location(data) {
+                console.log("set", data);
+            }
+        }
+
+        let obj = new Person("ich",100,"guangdong")
+    </script>
+</body>
+
+</html>
