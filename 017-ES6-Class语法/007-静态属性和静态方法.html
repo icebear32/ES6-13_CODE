@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态属性和静态方法</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            // 通过static关键字声明一个静态属性
+            static myname = "Person类得名字"
+            
+            // 通过static关键字声明一个静态方法
+            static mymethod = function() {
+                console.log("mymethod");
+            }
+ 
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+
+            say() {
+                console.log(this.name, this.age);
+            }
+        }
+
+        let obj = new Person("ich", 100)
+
+        // 静态属性只能通过   类名.属性名 = 属性值
+        console.log(Person.myname);
+        // 静态方法只能通过类去访问，不能通过实例去访问
+        Person.mymethod()
+    </script>
+</body>
+
+</html>

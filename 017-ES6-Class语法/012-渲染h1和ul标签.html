@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box1">
+        <h1></h1>
+        <ul></ul>
+    </div>
+    <div class="box2">
+        <h1></h1>
+        <img src="" alt="" style="width: 100px;">
+        <ul></ul>
+    </div>
+    <script>
+        var data1 = {
+            title: "体育",
+            list: ["体育-1", "体育-2", "体育-3"]
+        }
+
+        var data2 = {
+            title: "动画",
+            url:"./1.png",
+            list: ["动画-1", "动画-2", "动画-3"]
+        }
+
+        class CreateBox {
+            constructor(select, data) {
+                this.ele = document.querySelector(select)
+                this.title = data.title
+                this.list = data.list
+
+                // 直接执行渲染的方法
+                this.render()
+            }
+
+            render () {
+                let oh1 = this.ele.querySelector("h1")
+                let oul = this.ele.querySelector("ul")
+
+                oh1.innerHTML = this.title
+                oul.innerHTML = this.list.map(item => 
+                    `<li>${item}</li>`
+                ).join("")
+            }
+        }
+
+        new CreateBox(".box1", data1)
+
+        class CreateImgBox extends CreateBox {
+            constructor(select,data) {
+                super(select,data)
+                this.imgUrl = data.url
+
+                // 再次执行时为了 url 赋值了，让它获得img节点信息
+                this.render()
+            }
+
+            render(){
+                super.render()
+                let oimg = this.ele.querySelector("img")
+                oimg.src = this.imgUrl
+            }
+        }
+
+        new CreateImgBox(".box2",data2)
+    </script>
+</body>
+
+</html>

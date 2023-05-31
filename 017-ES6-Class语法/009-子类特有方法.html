@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子类特有方法</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            static myname = "Person类得名字"
+            static mymethod = function () {
+                console.log("mymethod");
+            }
+
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+
+            say() {
+                console.log(this.name, this.age);
+            }
+        }
+
+        // 继承 Person 类
+        class Student extends Person {
+            constructor(name, age, score) {
+                // super必写，不写报错
+                super(name, age)
+                this.score = score
+            }
+            // 子类自己的特有方法
+            getScore() {
+                console.log(this.score);
+            }
+        }
+
+        let obj = new Student("ich", 100, 150)
+    </script>
+</body>
+
+</html>

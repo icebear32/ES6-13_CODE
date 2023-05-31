@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态属性和静态方法的继承</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            static myname = "Person类的名字"
+
+            static mymethod = function () {
+                console.log("mymethod");
+            }
+
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+
+            say() {
+                console.log(this.name, this.age);
+            }
+        }
+
+        // 继承 Person 类
+        class Student extends Person {
+            // static myname = "Person类的名字"
+            // 覆盖父类的静态属性
+            static myname = "Student类的名字"
+
+            // static mymethod = function () {
+            //     console.log("mymethod");
+            // }
+            // 覆盖父类的静态方法
+            static mymethod = function () {
+                console.log("Student - mymethod",this.myname);
+                // this.myname 就近原则，所以是子类的静态属性 "Student类的名字"
+            }
+
+            constructor(name, age, score) {
+                super(name, age)
+                this.score = score
+            }
+
+            say() {
+                super.say()
+                console.log(this.score);
+            }
+
+            getScore() {
+                console.log(this.score);
+            }
+        }
+
+        let obj = new Student("ich", 100, 150)
+    </script>
+</body>
+
+</html>
