@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导出导入的第二种方式</title>
+</head>
+<body>
+    <div></div>
+    <script type="module">
+        // import {A1,B1} from './003-1.js'
+        // A1()
+        // B1()
+        // 下面的名字不可以随意写，否则报错
+        // import {A11,B11} from './003-1.js'
+        // A11()
+        // B11()
+
+        // 第二种方式重名问题，可以重命名
+        // import {test as test1} from './003-1.js'
+        // import {test as test2} from './003-2.js'
+        // test1()
+        // test2()
+
+        // * 号全导入
+        import * as obj1 from './003-1.js'
+        import * as obj2 from './003-2.js'
+        obj1.A1()
+        obj2.A1()
+    </script>
+</body>
+</html>

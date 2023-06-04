@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导出导入的第三种方式</title>
+</head>
+
+<body>
+    <div></div>
+    <script type="module">
+        // import { A1, B1, test as test1 } from './003-1.js'
+        // A1()
+        // B1()
+        // console.log(test1)
+
+        // 单独导出的访问方式
+        // import * as obj1 from './004-1.js'
+        // obj1.A1()
+        // obj1.B1()
+        // obj1.test()
+
+        // 混合方式，有的时单独导出，有的是 default 导出
+        import test1,{A1,B1} from './004-1.js'
+        test1()
+        A1()
+        B1()
+    </script>
+</body>
+
+</html>
