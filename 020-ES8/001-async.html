@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async</title>
+</head>
+
+<body>
+    <script>
+        // async function test() {
+        //     console.log("test");
+        // }
+
+        // let res = test()
+        // console.log(res); // 返回值是一个 Promise，状态：fulfilled
+        // // 执行 then 会走成功，打印 undefined，因为没有设置返回值
+        // res.then(res => {
+        //     console.log("success", res); // success undefined
+        // }).catch(err => {
+        //     console.log("err", err);
+        // })
+        async function test() {
+            console.log("test");
+            // return "success 1111"
+            return new Promise((resolve,reject) => {
+                // 成功
+                // resolve("data-1111")
+
+                // 失败
+                reject("err-2222")
+            })
+        }
+
+        let res = test()
+        // console.log(res); // 返回值是一个 Promise，状态：fulfilled
+        // 执行 then 会走成功，打印 undefined，因为没有设置返回值
+        res.then(res => {
+            console.log("success", res); // success undefined
+        }).catch(err => {
+            console.log("err", err);
+        })
+
+        /*
+            1. async 返回值是非 promise 对象，fulfiled， then指定
+            2. async 返回的是 promsie 对象，fulfilled vs rejected ,then vs catch
+        */
+    </script>
+</body>
+
+</html>
