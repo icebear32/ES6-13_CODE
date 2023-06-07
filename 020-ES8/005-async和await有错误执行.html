@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二个方法有错误出现</title>
+</head>
+
+<body>
+    <script>
+        function ajax1() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log("ajax1-成功");
+                    resolve("data-1111")
+
+                    // // 其中有错误发生，导致 reject 
+                    // reject("err-2222")
+                }, 1000)
+            })
+        }
+
+        function ajax2() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // console.log("ajax2-成功");
+                    // resolve("data-1111")
+
+                    // 其中有错误发生，导致 reject 
+                    reject("err-2222")
+                }, 1000)
+            })
+        }
+
+        async function test() {
+            let res1 = await ajax1()
+            console.log(res1);
+
+            let res2 = await ajax2(res1)
+            console.log(res2);
+
+            return res2
+        }
+
+        test().then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log("err", err);
+        })
+
+        // 运行结果：
+        // 因为第一个方法没出现问题，第二个出现问题，
+        // 先运行第一个方法然后传入到第二个方法，
+        // 出现错误，直接跳到 catch
+    </script>
+</body>
+
+</html>

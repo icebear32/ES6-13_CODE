@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async和await 使用 try...catch</title>
+</head>
+
+<body>
+    <script>
+        function ajax1() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log("ajax1-成功");
+                    resolve("data-1111")
+
+                    // // 其中有错误发生，导致 reject 
+                    // reject("err-1111")
+                }, 1000)
+            })
+        }
+
+        function ajax2() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // console.log("ajax2-成功");
+                    // resolve("data-1111")
+
+                    // 其中有错误发生，导致 reject 
+                    reject("err-2222")
+                }, 1000)
+            })
+        }
+
+        async function test() {
+            try {
+                let res1 = await ajax1()
+                console.log(res1);
+
+                let res2 = await ajax2(res1)
+                console.log(res2);
+
+                console.log("渲染页面");
+            } catch (error) {
+                console.log("err", error);
+            }
+        }
+
+        // 不用then和catch会出现报错，但是可以在test内部加入try...catch
+        test()
+
+        // 运行结果：
+        // 第一个方法正常执行
+        // 因为第二个方法出现问题
+        // catch 捕获
+    </script>
+</body>
+
+</html>
