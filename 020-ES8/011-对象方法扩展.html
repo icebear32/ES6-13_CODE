@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象方法扩展</title>
+</head>
+
+<body>
+    <script>
+        let obj = {
+            name: "ich",
+            age: 100
+        }
+
+        // 传统方法 - 获得对象的 key 值
+        console.log(Object.keys(obj));
+        console.log("========================");
+        // ES8
+        // 获得 value 值
+        console.log(Object.values(obj));
+        // 把对象的每一对 key 和 value 放进一个数组 
+        console.log(Object.entries(obj));
+
+        // // 将对象 map结构化
+        // let m = new Map(obj)
+        // console.log(m);
+        // // 出现报错,这个对象不是可迭代的,没有迭代器
+
+        // 改成 数组包含的 key 和 value 形式
+        // let m = new Map([
+        //     ["a", 1],
+        //     ["b", 2]
+        // ])
+        // console.log(m);
+        // 打印结果: Map(2) {'a' => 1, 'b' => 2}
+        // 就是一个 entries 的结果
+        // 所以可以传入一个 entries 
+        let m = new Map(Object.entries(obj))
+        console.log(m);
+        // Map(2) {'name' => 'ich', 'age' => 100}
+
+        // 获取对象的所有属性的描述符
+        console.log(Object.getOwnPropertyDescriptors(obj));
+    </script>
+</body>
+
+</html>

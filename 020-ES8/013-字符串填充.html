@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串填充</title>
+</head>
+
+<body>
+    <script>
+        let str = "ichdu"
+
+        // 前面追加几个 x
+        console.log(str.padStart(10, "x")); // xxxxxichdu
+        // 后面追加几个 x
+        console.log(str.padEnd(10, "x")); // ichduxxxxx
+        // padStart 和 padEnd 填充某个字符,达到指定长度
+        console.log(str.padStart(4, "x")); // ichdu
+        console.log(str.padEnd(4, "x")); // ichdu
+    </script>
+</body>
+
+</html>
