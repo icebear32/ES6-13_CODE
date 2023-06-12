@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.fromEntries</title>
+</head>
+
+<body>
+    <script>
+        // 变成一个对象
+        let arr = [["name", "ich"], ["age", 100]]
+        console.log(Object.fromEntries(arr));
+
+        // 用处1 - Map 转 Object
+        let m = new Map()
+        m.set("name", "du")
+        m.set("age", 100)
+        console.log(Object.fromEntries(m));
+
+        // 用处2 - 类似对象的转成对象
+        let str = "name=xiaoming&age=18"
+        let seatchParams = new URLSearchParams(str)
+        // console.log(seatchParams);
+        console.log(Object.fromEntries(seatchParams));
+
+        // 用处3 - 对象转化成另一种形式的对象
+        let obj = {
+            "A": ["A1", "A2", "A3"],
+            "B": ["B1", "B2"],
+            "C": ["C1"]
+        }
+
+        // console.log(obj.map); // 没有
+        let myarr = Object.entries(obj)
+        console.log(myarr);
+        let mynewarr = myarr.map(([key, value]) =>
+            // map 映射成以下结构的数组
+            [key, value.length]
+        )
+        console.log(mynewarr);
+        // 再转换成对象
+        console.log(Object.fromEntries(mynewarr));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可选的 catch</title>
+</head>
+
+<body>
+    <script>
+        let pro1 = new Promise(function (resolve, reject) {
+            //执行器函数
+            setTimeout(() => {
+                resolve("成功的结果")
+            }, 30000)
+        })
+        let pro2 = new Promise(function (resolve, reject) {
+            //执行器函数
+            setTimeout(() => {
+                reject()
+            }, 2000)
+        })
+        async function test() {
+            try {
+                await Promise.race([pro1, pro2])
+            } catch {
+                console.log("不关心错误结果，网络超时")
+            }
+        }
+        test()
+    </script>
+</body>
+
+</html>
