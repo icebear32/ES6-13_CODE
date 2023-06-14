@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BigInt</title>
+</head>
+
+<body>
+    <script>
+        // 传统int的通病 - int 数据表示的整数范围在-2^53到2^53
+        // 超过这个范围，无法精确表示这个值
+        console.log(2 ** 53);
+
+        let num1 = 123
+        let num2 = 123n
+
+        console.log(num1, num2); // 123 123n
+
+        // == 是会不判断类型，true
+        console.log(num1 == num2); // true
+
+        // === 是会判断类型，false
+        console.log(num1 === num2); // false
+
+        console.log(num2 > 100);
+        console.log(num2 < 100);
+
+        // 以下代码程序报错 - bigint类型不能和其他类型运算
+        // console.log(num2 + 2);
+
+        // BigInt 函数
+        // 转成 BigInt 函数 - 可以跟bigInt函数运算
+        let num3 = BigInt(2)
+        console.log(num3); // 2n
+        console.log(num2 + num3);
+
+        let num4 = 2n
+        console.log(num3 === num4);
+
+        // 更够处理比int最大范围值的更大的值
+        console.log(BigInt(2 ** 53))
+        console.log(BigInt(2 ** 53) + BigInt(1))
+        console.log(BigInt(2 ** 53) * BigInt(2))
+        console.log(BigInt(2 ** 53) + BigInt(10))
+    </script>
+</body>
+
+</html>

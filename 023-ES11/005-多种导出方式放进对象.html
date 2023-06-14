@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多种导出方式放进对象</title>
+</head>
+<body>
+    <script type="module">
+        // import * as obj from './005-1.js'
+        // 改导入 2.js 文件，该文件也具有 1.js 模块化的方法
+        // import * as obj from './005-2.js'
+
+        // 只用 另一个模块的 某一个方法
+        import {obj2,test2} from './005-2.js'
+
+        // console.log(obj);
+        console.log(obj2);
+        console.log(test2);
+    </script>
+</body>
+</html>
