@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>空值合并运算符</title>
+</head>
+
+<body>
+    <script>
+        console.log("===== ?? =====");
+        let str1 = null ?? "ich"
+        console.log("null ?? ich =>" + str1);
+        let str2 = undefined ?? "du"
+        console.log("undefined ?? du =>" + str2);
+        let str3 = "ich" ?? "du"
+        console.log("ich ?? du =>" + str3);
+
+        // || 符号 的功能也跟 空值合并运算符一样
+        console.log("===== || =====");
+        let str4 = null || "ich"
+        console.log("null || ich =>" + str4);
+        let str5 = undefined || "du"
+        console.log("undefined || du" + str5);
+
+        // 区别：对0判断的时候，出现不同结果
+        let str6 = 0 ?? "ich"
+        console.log("0 ?? ich =>" + str6);  // 结果：0
+
+        // 因为 || 是进行判断的，0 为否，所以得出结果是 ich
+        let str7 = 0 || "ich"
+        console.log("0 || ich =>" + str7);
+
+        // 应用 - QQ个性签名
+        let obj = {
+            name: "ich",
+            introduction: 0
+        }
+
+        console.log(obj.introduction || "这个人很懒") // 这个人很懒
+        console.log(obj.introduction ?? "这个人很懒") // 0
+    </script>
+</body>
+
+</html>

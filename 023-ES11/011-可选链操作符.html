@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可选链操作符</title>
+</head>
+
+<body>
+    <script>
+        let obj = {
+            name: "kerwin",
+            introduction: 0,
+            location:{
+                city:"dalian"
+            }
+        }
+
+        // 每个按顺序执行，如果为真停止
+        console.log(obj && obj.location && obj.location.city)
+        console.log(obj?.location?.city)
+
+        let obj1 = {
+            name: "kerwin",
+            introduction: 0,
+            // location:{
+            //     city:"dalian"
+            // }
+        }
+
+        // 每个按顺序执行，如果为真进行下一个，为假则停止返回undefined
+        console.log(obj1 && obj1.location && obj1.location.city)
+        // 跟上面的一样
+        console.log(obj1?.location?.city)
+    </script>
+</body>
+
+</html>

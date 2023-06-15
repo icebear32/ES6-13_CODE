@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>顶层对象 globalThis</title>
+</head>
+
+<body>
+    <script>
+        console.log(window);
+        console.log(globalThis);
+        console.log(window === globalThis);
+
+        const obj = {
+            name: "ich",
+            getName() {
+                console.log(this, globalThis);
+                return this.name
+            }
+        }
+
+        obj.getName()
+        // this 获取的事 obj 对象
+        // globalThis 可以获取到 window 对象的，但是为什么不直接用window获取？
+        // globalThis 提供了一个标准的方式来获取不同环境下的全局 this 对象（也就是全局对象自身）
+        // 不像 window 或者 self这些属性，它确保可以在有无窗口的各种环境下正常工作
+    </script>
+</body>
+
+</html>

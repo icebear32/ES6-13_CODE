@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟接收数据</title>
+</head>
+
+<body>
+    <script>
+        // // 接收到一个int范围内的最大值
+        // let jsonstr = `
+        //     {
+        //         "id": 9007199254740992,
+        //         "list":[]
+        //     }
+        // `
+        // // 接收正常
+        // console.log(JSON.parse(jsonstr)); // {id: 9007199254740992, list: Array(0)}
+
+        // 接收到一个比 int范围内的最大值 还大的值
+        let jsonstr = `
+            {
+                "id": 9007199254740993,
+                "list":[]
+            }
+        `
+        // 接收出现错误，还是显示接收到一个int范围内的最大值 9007199254740992
+        console.log(JSON.parse(jsonstr));  // {id: 9007199254740992, list: Array(0)}
+
+        // 解决方法：
+        // 1. 后端返回字符串
+
+        // 2. 引入一个模块 json-bigint
+    </script>
+</body>
+
+</html>
