@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise.any</title>
+</head>
+
+<body>
+    <script>
+        // Promise.any
+        // 登录 - 会员联盟系统（沃尔玛、华润万家、盒马）
+        let ajax1 = function () {
+            return new Promise((resolve, reject) => {
+                // resolve("沃尔玛")
+                reject("沃尔玛")
+            })
+        }
+
+        let ajax2 = function () {
+            return new Promise((resolve, reject) => {
+                // resolve("华润万家")
+                reject("华润万家")
+            })
+        }
+
+        let ajax3 = function () {
+            return new Promise((resolve, reject) => {
+                // resolve("盒马")
+                reject("盒马")
+            })
+        }
+
+        // 只要一个成功就成功
+        Promise.any([ajax1(), ajax2(), ajax3()]).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log("err", err);
+        })
+    </script>
+</body>
+
+</html>

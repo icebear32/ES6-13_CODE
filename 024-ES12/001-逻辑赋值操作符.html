@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>逻辑赋值操作符</title>
+</head>
+
+<body>
+    <script>
+        // let a = 1
+        // // a  = a + 2
+        // a += 2
+
+        let a = true
+        let b = false
+        // a = a && b
+        // 改成 ES12写法
+        a &&= b
+        console.log(a); // false
+
+        let a1 = true
+        let b1 = false
+        a1 ||= b1
+        console.log(a1);
+
+        let a2 = true
+        let b2 = false
+        a2 ??= b2
+        console.log(a2);
+
+        let obj = {
+            name: "ich",
+        }
+
+        obj.introduction = obj.introduction ?? "很懒"
+        console.log(obj.introduction ??= "很懒");
+    </script>
+</body>
+
+</html>
