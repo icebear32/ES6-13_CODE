@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeakRef占用内存空间</title>
+</head>
+<body>
+    <script>
+        // let m1 = new Map();
+        // (function(){
+        //     // let a = 1
+        //     // let b = 2
+
+        //     let arr1 = new Array(10 * 1024 * 1024)
+        //     let arr2 = new Array(10 * 1024 * 1024)
+        //     let arr3 = new Array(10 * 1024 * 1024)
+        //     let arr4 = new Array(10 * 1024 * 1024)
+        //     let arr5 = new Array(10 * 1024 * 1024)
+        //     let arr6 = new Array(10 * 1024 * 1024)
+        //     let arr7 = new Array(10 * 1024 * 1024)
+        //     let arr8 = new Array(10 * 1024 * 1024)
+        //     let arr9 = new Array(10 * 1024 * 1024)
+
+        //     m1.set(arr1,"11")
+        //     m1.set(arr2,"11")
+        //     m1.set(arr3,"11")
+        //     m1.set(arr4,"11")
+        //     m1.set(arr5,"11")
+        //     m1.set(arr6,"11")
+        //     m1.set(arr7,"11")
+        //     m1.set(arr8,"11")
+        //     m1.set(arr9,"11")
+        // })()
+        // 匿名函数，临时创建空间，临时创建变量，执行完会被垃圾回收机制回收
+        // 执行完，临时变量 arr1-arr9 被回收
+        // 但是被放进 Map结构 的 m1 中，就不会被回收占用大量内存
+
+        // 改成 WeakMap
+        let m1 = new WeakMap();
+        (function(){
+            // let a = 1
+            // let b = 2
+
+            let arr1 = new Array(10 * 1024 * 1024)
+            let arr2 = new Array(10 * 1024 * 1024)
+            let arr3 = new Array(10 * 1024 * 1024)
+            let arr4 = new Array(10 * 1024 * 1024)
+            let arr5 = new Array(10 * 1024 * 1024)
+            let arr6 = new Array(10 * 1024 * 1024)
+            let arr7 = new Array(10 * 1024 * 1024)
+            let arr8 = new Array(10 * 1024 * 1024)
+            let arr9 = new Array(10 * 1024 * 1024)
+
+            m1.set(arr1,"11")
+            m1.set(arr2,"11")
+            m1.set(arr3,"11")
+            m1.set(arr4,"11")
+            m1.set(arr5,"11")
+            m1.set(arr6,"11")
+            m1.set(arr7,"11")
+            m1.set(arr8,"11")
+            m1.set(arr9,"11")
+        })()
+    </script>
+</body>
+</html>

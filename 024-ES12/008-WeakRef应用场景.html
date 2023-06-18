@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeakRef应用场景</title>
+</head>
+
+<body>
+    <button id="like">like</button>
+    <script>
+        // let wmap = new WeakMap()
+        // let like = document.getElementById("like")
+
+        // wmap.set(like, { click: 0 })
+
+        // like.onclick = function () {
+        //     let times = wmap.get(like)
+        //     times.click++
+        // }
+
+        // // 移除 like
+        // setTimeout(() => {
+        //     document.body.removeChild(like)
+
+        //     // 没有设置为null，like还是可以获得节点信息
+        //     // like = null
+
+        //     console.log(like);
+        // }, 2000)
+        // // 应该出现的效果:like应该会被移除,wmap 的 like 没有
+        // // 但是没有消失,like 还是在 wmap 中
+
+        // 解决 - 变成弱引用
+        let wmap = new WeakMap()
+        wmap.set(document.getElementById("like"), { click: 0 })
+        document.getElementById("like").addEventListener("click", function () {
+            let times = wmap.get(document.getElementById("like"))
+            times.click++
+        }, false)
+
+        // 模拟节点被删除的情况
+        setTimeout(() => {
+            document.body.removeChild(document.getElementById("like"))
+        }, 2000)
+    </script>
+</body>
+
+</html>

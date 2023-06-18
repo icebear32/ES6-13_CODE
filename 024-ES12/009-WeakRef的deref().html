@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeakRef的deref()</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            name: "ich"
+        }
+
+        // 转成弱引用
+        let wobj = new WeakRef(obj)
+        // wobj.deref() //拿到原始对象
+
+        obj = null
+    </script>
+</body>
+</html>
