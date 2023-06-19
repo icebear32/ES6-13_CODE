@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类新增特性1</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            constructor(name, age) {
+                this.name = name
+                this, age = age
+
+                // 不需要外界传参的数据初始值，且写在构造器里面
+                this.state = {
+                    a: 1,
+                    b: 2
+                }
+            }
+        }
+        let obj = new Person("ich", 100)
+        console.log(obj);
+
+        class Person1 {
+            // 不需要外界传参的数据初始值,可以写在外层
+            state = {
+                a: 1,
+                b: 2
+            }
+            a = 1;
+            b = 2;
+            constructor(name, age) {
+                this.name = name
+                this, age = age
+            }
+        }
+
+        let obj1 = new Person1("du", 100)
+        console.log(obj1);
+    </script>
+</body>
+
+</html>

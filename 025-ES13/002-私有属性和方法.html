@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私有属性和方法</title>
+</head>
+
+<body>
+    <script>
+        // class Cache {
+        //     obj = {}
+
+        //     get(key) {
+        //         return this.obj[key]
+        //     }
+
+        //     set(key, value) {
+        //         this.obj[key] = value
+        //     }
+        // }
+
+        // let store = new Cache()
+        // store.set("name","ich")
+        // store.set("age",100)
+        // console.log(store);
+        // 不希望随便任意更改属性值
+
+
+        // 属性方法设置下划线,让大家不要对此属性方法进行操作
+        // class Cache {
+        //     _obj = {}
+
+        //     get(key) {
+        //         return this._obj[key]
+        //     }
+
+        //     set(key, value) {
+        //         this._obj[key] = value
+        //     }
+        // }
+
+        // let store = new Cache()
+        // store.set("name","ich")
+        // store.set("age",100)
+        // console.log(store);
+        // 之前不支持属性方法私有化，
+        // 用君子协定的下划线来提示，下划线的属性方法不要更改
+        // 但是还是可以获取和更改属性方法的
+
+
+        // # 号代表私有化
+        class Cache {
+            #obj = {}
+
+            get(key) {
+                return this.#obj[key]
+            }
+
+            set(key, value) {
+                this.#obj[key] = value
+            }
+        }
+
+        let store = new Cache()
+        store.set("name","ich")
+        store.set("age",100)
+        console.log(store);
+    </script>
+</body>
+
+</html>
